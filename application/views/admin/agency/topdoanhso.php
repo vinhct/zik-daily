@@ -1,94 +1,63 @@
-<section class="content-header">
-    <h1>
-        Top doanh số
-    </h1>
-</section>
-
+<h3 class="page-title">
+   Top doanh số
+</h3>
 <input type="hidden" value="<?php echo $admin_info->status ?>" id="statususer">
 <input type="hidden" value="<?php echo $admin_info->nickname ?>" id="nickname">
 <input type="hidden" value="<?php echo $admin_info->nickname ?>" id="hdnnickname">
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-1 control-label">Tháng:</label>
-
-                            <div class="col-sm-2">
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" class="form-control" id="fromDate" name="fromDate"
-                                           value="<?php echo $this->input->post("fromDate") ?>"> 
-										   <span class="input-group-addon">
-												<span class="glyphicon glyphicon-calendar"></span>
-											</span>
-											<input type="hidden" id="startDate">  
-                                            <input type="hidden" id="endDate">   
-                                </div>
-                            </div>
-                            <label class="col-sm-1 control-label" style="display:none">Đến ngày:</label>
-
-                            <div class="col-sm-2" style="display:none">
-                                <div class="input-group date" id="datetimepicker2">
-                                    <input type="text" class="form-control" id="toDate" name="toDate"
-                                           value="<?php echo $this->input->post("toDate") ?>"> <span
-                                        class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-1"><input type="submit" value="Tìm kiếm" name="submit"
-                                                         class="btn btn-primary pull-right" id="search_tran"></div>
-                            <div class="col-sm-1"><input type="reset" value="Reset" name="submit"
-                                                         class="btn btn-primary pull-left" id="reset"
-                                                         onclick="window.location.href = '<?php echo base_url('agency/topdoanhso') ?>'; ">
-                            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <?php $this->load->view('admin/message', $this->data); ?>
+                <input type="hidden" id="startDate">
+                <input type="hidden" id="endDate">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label for="exampleInputEmail1" id="error" style="color: red"></label>
                         </div>
-                    </div>
-
-                   <div style="width: 100%;float: left;color: #ff0000;" id="error"></div>
-                    <div class="col-sm-12" id="table1">
-                        <div id="spinner" class="spinner" style="">
-                            <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
-                                 alt="Loading"/>
-                        </div>
-                        <h1 id="resultsearch"></h1>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-1 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Tháng :</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control"
+                                       id="fromDate" name="fromDate" value="<?php echo $this->input->post("fromDate") ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="submit" value="Tìm kiếm" name="submit"
+                                   class="btn btn-success" id="search_tran">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body" id="table1">
+
+
+                <div id="spinner" class="spinner" style="display:none;">
+                    <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+                         alt="Loading"/>
+                </div>
+                <div class="text-center pull-right">
+                    <ul id="pagination-demo" class="pagination-lg"></ul>
+                    <ul id="pagination-demosearch" class="pagination-lg"></ul>
+                </div>
+
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<style>
-    .spinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        overflow: auto;
-        width: 100px; /* width of the spinner gif */
-        height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
 
-    #resultsearch {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        width: 400px; /* width of the spinner gif */
-        height: 100px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
-</style>
-<script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="<?php echo public_url('admin') ?>/plugins/jQuery//jquery.dataTables.min.css">
 
 <script>
     $(function () {

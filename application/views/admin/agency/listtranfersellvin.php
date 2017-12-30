@@ -1,214 +1,218 @@
-<section class="content-header">
-    <h1>
-        Lịch sử chuyển khoản bán <?php echo $namegame ?>
-    </h1>
-</section>
-<form action="<?php echo base_url("agency/listtranfersellvin")?>" method="post">
+<h3 class="page-title">
+    Lịch sử chuyển khoản bán <?php echo $namegame ?>
+</h3>
 <input type="hidden" value="<?php echo $admin_info->status ?>" id="statususer" name="statususer">
- <input type="hidden" value="<?php echo $admin_info->nickname ?>" id="hdnnickname1" name="hdnnickname1">
-     <input type="hidden" value="<?php echo $admin_info->id ?>" id="hdnparentidagent" name="hdnparentidagent">
-    <input type="hidden" value="<?php echo $parrentid ?>" id="hdnparentidagentlevel2" name="hdnparentidagentlevel2">
+<input type="hidden" value="<?php echo $admin_info->nickname ?>" id="hdnnickname1" name="hdnnickname1">
+<input type="hidden" value="<?php echo $admin_info->id ?>" id="hdnparentidagent" name="hdnparentidagent">
+<input type="hidden" value="<?php echo $parrentid ?>" id="hdnparentidagentlevel2" name="hdnparentidagentlevel2">
 <input type="hidden" id="page1"  name="page1" >
 <input type="hidden" value="<?php echo $listnn ?>" id="listdaily1">
 <input type="hidden" value="<?php echo $listnn1 ?>" id="listdaily2">
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
 
-                    <?php if ($admin_info->status == "A"): ?>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-1"></div>
 
-                                    <label class="col-sm-1 control-label" style="width: 150px">NickName </label>
-                                    <div class="col-sm-2">
-                                        <input type="text" id="nickname" name="nickname" class="form-control" value="<?php echo $this->input->post("nickname")?>">
-                                    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <?php $this->load->view('admin/message', $this->data); ?>
+                <input type="hidden" id="startDate">
+                <input type="hidden" id="endDate">
 
-                                    <input type="hidden" id="hdnnickname"  class="form-control"
-                                           value="<?php echo $nickname ?>">
-                                <label class="col-sm-1 control-label">Trạng thái</label>
-
-                                <div class="col-sm-2">
-                                    <select class="form-control" id="status" name="status" >
-                                        <option value="">Chọn</option>
-
-                                        <option value="1" <?php if($this->input->post("status")== "1"){echo "selected";}  ?>>Tài khoản thường chuyển đại lý cấp 1</option>
-                                        <option value="2" <?php if($this->input->post("status")== "2"){echo "selected";}  ?>>Tài khoản thường chuyển đại lý cấp 2</option>
-                                        <option value="3" <?php if($this->input->post("status")== "3"){echo "selected";}  ?>>Đại lý cấp 1 chuyển tài khoản thường</option>
-                                        <option value="4" <?php if($this->input->post("status")== "4"){echo "selected";}  ?>>Đại lý cấp 1 chuyển đại lý cấp 1</option>
-                                        <option value="5" <?php if($this->input->post("status")== "5"){echo "selected";}  ?>>Đại lý cấp 1 chuyển đại lý cấp 2</option>
-                                        <option value="6" <?php if($this->input->post("status")== "6"){echo "selected";}  ?>>Đại lý cấp 2 chuyển tài khoản thường</option>
-                                        <option value="7" <?php if($this->input->post("status")== "7"){echo "selected";}  ?>>Đại lý cấp 2 chuyển đại lý cấp 1</option>
-                                        <option value="8" <?php if($this->input->post("status")== "8"){echo "selected";}  ?>>Đại lý cấp 2 chuyển đại lý cấp 2</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label for="exampleInputEmail1" id="error" style="color: red"></label>
                         </div>
-
-                        <div class="form-group">
-						<form action="" method="POST">
-                            <div class="row">
-                                <div class="col-sm-1"></div>
-                                <label class="col-sm-1 control-label">Từ ngày:</label>
-
-                                <div class="col-sm-2">
-                                    <div class="input-group date" id="datetimepicker1">
-                                        <input type="text" class="form-control" id="fromDate" name="fromDate" value="<?php echo $start_time?>"> <span
-                                            class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                    </div>
-                                </div>
-                                <label class="col-sm-1 control-label">Đến ngày:</label>
-
-                                <div class="col-sm-2">
-                                    <div class="input-group date" id="datetimepicker2">
-                                        <input type="text" class="form-control" id="toDate" name="toDate" value="<?php echo $end_time?>"><span
-                                            class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-1"><input type="button" value="Tìm kiếm" name="submit"
-                                                             class="btn btn-primary pull-right" id="search_tran"></div>
-                                <div class="col-sm-1"><input type="reset" value="Reset" name="submit"
-                                                             class="btn btn-primary pull-left" id="reset"
-                                                             onclick="window.location.href = '<?php echo base_url('agency/listtranfersellvin') ?>'; ">
-                                </div>
-								
-								 <div class="col-sm-1"><input type="button" value="Xuất Exel" name="submit"
-                                             class="btn btn-primary pull-left" id="exportexel">
-								</div>
-                            </div>
-							</form>
-                        </div>
-                    <?php else: ?>
-                        <div class="form-group">
-						<form action="" method="POST">
-                            <div class="row">
-                                <?php if (isset($nickname)): ?>
-                                    <input type="hidden" id="nickname" class="form-control"
-                                           value="<?php echo $nickname ?>">
-                                <?php else: ?>
-                                    <input type="hidden" id="nickname" value="<?php echo $admin_info->nickname ?>">
-                                <?php endif; ?>
-                                <div class="col-sm-1"></div>
-                                <label class="col-sm-1 control-label">Từ ngày:</label>
-
-                                <div class="col-sm-2">
-                                    <div class="input-group date" id="datetimepicker1">
-                                        <input type="text" class="form-control" id="fromDate" name="fromDate" value="<?php echo $start_time?>"> <span
-                                            class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                    </div>
-                                </div>
-                                <label class="col-sm-1 control-label">Đến ngày:</label>
-
-                                <div class="col-sm-2">
-                                    <div class="input-group date" id="datetimepicker2">
-                                        <input type="text" class="form-control" id="toDate" name="toDate" value="<?php echo $end_time?>"> <span
-                                            class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-1"><input type="button" value="Tìm kiếm" name="submit"
-                                                             class="btn btn-primary pull-right" id="search_tran"></div>
-                                <div class="col-sm-1"><input type="reset" value="Reset" name="submit"
-                                                             class="btn btn-primary pull-left" id="reset"
-                                                             onclick="window.location.href = '<?php echo base_url('agency/listtranfer') ?>'; ">
-                                </div>
-                            </div>
-							</form>
-                        </div>
-                    <?php endif; ?>
-
-                    <div class="col-sm-12">
-                        <table  id="example3" class="table" style="margin-bottom: 0px;border-top: 0px;display:none">
-                            <tr>
-                                <td style="width: 50px;border-top: 0px" ><b>Tổng <?php echo $namegame ?> gửi:</b></td>
-                                <td id="totalvinsend" style="width: 50px;border-top: 0px"></td>
-                                <td  style="width: 40px;border-top: 0px"><b>Tổng <?php echo $namegame ?> nhận:</b></td>
-                                <td id="totalvinreceive" style="width: 50px;border-top: 0px"></td>
-                                <td  style="width: 30px;border-top: 0px"><b>Tổng Phí:</b></td>
-                                <td id="totalvinfee" style="width: 50px;border-top: 0px"></td>
-                            </tr>
-                        </table>
-						  <table style="width:100%;margin-bottom:5px;">
-                                <tr>
-                                    <td colspan="5"><input type="button" value="Cập nhật" id="btnupdate" style="float:right" class="btn btn-primary pull-right"></td>
-                                </tr>
-                            </table>
-							<div style="width: 100%;float: left;color: #ff0000;" id="error"></div>
-                        <table id="example2" class="table table-bordered table-hover" style="table-layout: fixed;word-wrap: break-word;">
-                            <thead>
-                            <tr>
-                                <th>STT</th>
-                                    <th>TK chuyển</th>
-                                    <th>TK nhận</th>
-                                    <th>Số <?php echo $namegame ?> gửi</th>
-                                    <th>Số <?php echo $namegame ?> nhận</th>
-                                    <th>Phí</th>
-                                    <th>Mô tả</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thời gian</th>
-                                    <?php if ($admin_info->status == "D"): ?>
-                                    <th><input type="checkbox" id="select_all"/>Hành động</th>
-                                    <?php endif; ?>
-                            </tr>
-                            </thead>
-                            <tbody id="logaction">
-
-                            </tbody>
-
-                        </table>
-
-                        <div id="spinner" class="spinner" style="display:none;">
-                            <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
-                                 alt="Loading"/>
-                        </div>
-                        <div class="text-center pull-right">
-                            <ul id="pagination-demo" class="pagination-lg"></ul>
-                        </div>
-                        <h1 id="resultsearch"></h1>
                     </div>
                 </div>
+                <?php if ($admin_info->status == "A"): ?>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Nickname :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <input type="text" id="nickname" name="nickname" class="form-control"
+                                       value="<?php echo $this->input->post("nickname") ?>">
+                            </div>
+                            <input type="hidden" id="hdnnickname" class="form-control"
+                                   value="<?php echo $nickname ?>">
+
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Trạng thái :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <select class="form-control" id="status" name="status">
+                                    <option value="">Chọn</option>
+                                    <option value="1" <?php if ($this->input->post("status") == "1") {
+                                        echo "selected";
+                                    } ?>>Tài khoản thường chuyển đại lý cấp 1
+                                    </option>
+                                    <option value="2" <?php if ($this->input->post("status") == "2") {
+                                        echo "selected";
+                                    } ?>>Tài khoản thường chuyển đại lý cấp 2
+                                    </option>
+                                    <option value="3" <?php if ($this->input->post("status") == "3") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 1 chuyển tài khoản thường
+                                    </option>
+                                    <option value="4" <?php if ($this->input->post("status") == "4") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 1 chuyển đại lý cấp 1
+                                    </option>
+                                    <option value="5" <?php if ($this->input->post("status") == "5") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 1 chuyển đại lý cấp 2
+                                    </option>
+                                    <option value="6" <?php if ($this->input->post("status") == "6") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 2 chuyển tài khoản thường
+                                    </option>
+                                    <option value="7" <?php if ($this->input->post("status") == "7") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 2 chuyển đại lý cấp 1
+                                    </option>
+                                    <option value="8" <?php if ($this->input->post("status") == "8") {
+                                        echo "selected";
+                                    } ?>>Đại lý cấp 2 chuyển đại lý cấp 2
+                                    </option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Từ ngày :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control"
+                                           id="fromDate" name="fromDate"
+                                           value="<?php echo $start_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Đến ngày :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control"
+                                           id="toDate" name="toDate"
+                                           value="<?php echo $end_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <input type="submit" value="Tìm kiếm" name="submit"
+                                       class="btn btn-success" id="search_tran">
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <input type="button" value="Xuất Exel" name="submit"
+                                       class="btn btn-success" id="exportexel">
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <?php if (isset($nickname)): ?>
+                        <input type="hidden" id="nickname" class="form-control"
+                               value="<?php echo $nickname ?>">
+                    <?php else: ?>
+                        <input type="hidden" id="nickname"
+                               value="<?php echo $admin_info->nickname ?>">
+                    <?php endif; ?>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Từ ngày :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control"
+                                           id="fromDate" name="fromDate"
+                                           value="<?php echo $start_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <label for="exampleInputEmail1">Đến ngày :</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control"
+                                           id="toDate" name="toDate"
+                                           value="<?php echo $end_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                <input type="submit" value="Tìm kiếm" name="submit"
+                                       class="btn btn-success" id="search_tran">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="button" value="Cập nhật" id="btnupdate"
+                                       class="btn btn-success pull-right">
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+
+            </div>
+            <div class="panel-body">
+
+
+                <table id="example2" class="table table-bordered table-hover" style="table-layout: fixed;word-wrap: break-word;">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>TK chuyển</th>
+                        <th>TK nhận</th>
+                        <th>Số <?php echo $namegame ?> gửi</th>
+                        <th>Số <?php echo $namegame ?> nhận</th>
+                        <th>Phí</th>
+                        <th>Mô tả</th>
+                        <th>Trạng thái</th>
+                        <th>Thời gian</th>
+                        <?php if ($admin_info->status == "D"): ?>
+                            <th><input type="checkbox" id="select_all"/>Hành động</th>
+                        <?php endif; ?>
+                    </tr>
+                    </thead>
+                    <tbody id="logaction">
+
+                    </tbody>
+
+                </table>
+
+                <div id="spinner" class="spinner" style="display:none;">
+                    <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+                         alt="Loading"/>
+                </div>
+                <div class="text-center pull-right">
+                    <ul id="pagination-demo" class="pagination-sm"></ul>
+                </div>
+
             </div>
         </div>
     </div>
-</section>
-</form>
-<style>
-    .spinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        overflow: auto;
-        width: 100px; /* width of the spinner gif */
-        height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
-
-    #resultsearch {
-        top: 50%;
-        left: 50%;
-        margin-left: 0px; /* half width of the spinner gif */
-        margin-top: 0px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        width: 400px; /* width of the spinner gif */
-        height: 100px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
-</style>
+</div>
 
 
 <script>

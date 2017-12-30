@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <section class="content-header">
     <h1>
         Lịch sử giao dịch trong game

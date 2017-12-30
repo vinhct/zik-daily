@@ -9,375 +9,218 @@
 
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="panel">
-            <div class="panel-heading">
+<div class="col-md-12">
+<div class="panel">
+    <div class="panel-heading">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label for="exampleInputEmail1" id="errorstatus" style="color: red"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Nick name :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <input type="text" class="form-control" name="param_name" id="param_name"
+                           placeholder="Nhập nick name">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <input type="button" value="Tìm kiếm" name="submit"
+                           class="btn btn-success" id="searchnickname">
+                </div>
+            </div>
+        </div>
+        <div id="info_user" style="display: none">
+            <?php if ($admin_info->status == "A") : ?>
+                <input type="hidden" name="username" id="username"
+                       value="">
+                <input type="hidden" name="nickname" id="nickname"
+                       value="">
+                <input type="hidden" name="email" id="email" value="">
+
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <label for="exampleInputEmail1" id="errorstatus" style="color: red"></label>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label">Tên đăng nhập:&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
+                                                         style="color: #0000ff"
+                                                         id="lblusername"></label></label>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label">Nick name:&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
+                                                         style="color: #0000ff"
+                                                         id="lblnickname"></label></label>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label">Số <?php echo $namegame ?> dư:&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
+                                                         style="color: #0000ff" id="lblvin"></label>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel-body">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-1 col-sm-2 col-xs-12">
-                            <label for="exampleInputEmail1">Nick name :</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Tên đại lý :</label>
                         </div>
                         <div class="col-md-3 col-sm-4 col-xs-12">
-                            <input type="text" class="form-control" name="param_name" id="param_name"
-                                   placeholder="Nhập nick name">
+                            <input type="text" class="form-control" id="namedaily">
                         </div>
                         <div class="col-md-3 col-sm-4 col-xs-12">
-                            <input type="button" value="Tìm kiếm" name="submit"
-                                   class="btn btn-success" id="searchnickname">
+                            <label for="inputEmail3" class="control-label" id="errorname"
+                                   style="color: red"></label>
                         </div>
                     </div>
                 </div>
-                <div id="info_user" style="display: none">
-                    <input type="hidden" name="username" id="username"
-                           value="">
-                    <input type="hidden" name="nickname" id="nickname"
-                           value="">
-                    <input type="hidden" name="email" id="email" value="">
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-4 col-xs-12">
-                                <label for="inputEmail3" class="control-label">Tên đăng nhập:&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                                             style="color: #0000ff" id="lblusername"></label></label>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-xs-12">
-                                <label for="inputEmail3" class="control-label">Nick name:&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                                             style="color: #0000ff" id="lblnickname"></label></label>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-xs-12">
-                                <label for="inputEmail3" class="control-label">Số <?php echo $namegame ?> dư:&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                                             style="color: #0000ff" id="lblvin"></label>
-                            </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Số điện thoại :</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="phonedaily">
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label" id="errorphone"
+                                   style="color: red"></label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-1 col-sm-2 col-xs-12">
-                                <label for="exampleInputEmail1">Tên đại lý :</label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" class="form-control" id="namedaily">
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-12">
-                                <label for="inputEmail3" class="control-label" id="errorname"
-                                       style="color: red"></label>
-                            </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Địa chỉ :</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="addressdaily">
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label" id="erroradd"
+                                   style="color: red"></label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-1 col-sm-2 col-xs-12">
-                                <label for="exampleInputEmail1">Số điện thoại :</label>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" class="form-control" id="phonedaily">
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-12">
-                                <label for="inputEmail3" class="control-label" id="errorphone"
-                                       style="color: red"></label>
-                            </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Ngân hàng :</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <select class="form-control" id="namebank">
+                                <option value="">Chọn</option>
+                                <option value="BIDV">BIDV</option>
+                                <option value="VietinBank">VietinBank</option>
+                                <option value="VietcomBank">VietcomBank</option>
+                                <option value="MSB">MaritimeBank</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label" id="errornamebank"
+                                   style="color: red"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Tên tài khoản ngân hàng:</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="usernamebank">
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label" id="erroruserbank"
+                                   style="color: red"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Số tài khoản ngân hàng:</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="numberbank">
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label" id="errornumberbank"
+                                   style="color: red"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Facebook:</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="facebook">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1">Hiển thị trong game:</label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="checkbox" id="isshow" name="chk" value="0">
+                            <input type="hidden" name="displayname" id="displayname" value="">
                         </div>
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <label for="exampleInputEmail1"></label>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <input type="button" id="setdaily1" name="setdaily1"
+                                   value="" class="btn btn-success pull-right">
+                        </div>
+                    </div>
+                </div>
+            <?php elseif ($admin_info->status == "D"): ?>
+                <input type="hidden" name="username" id="username"
+                       value="">
+                <input type="hidden" name="nickname" id="nickname"
+                       value="">
+                <input type="hidden" name="mobile" id="mobile" value="">
+                <input type="hidden" name="email" id="email" value="">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <label for="inputEmail3" class="control-label">Nick name:&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
+                                                         style="color: #0000ff"
+                                                         id="lblnickname"></label></label>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <input type="button" id="setdaily2" name="setdaily2"
+                                   value="" class="btn btn-success pull-left">
+                        </div>
+                    </div>
+                </div>
+            <?php  endif; ?>
 
-            </div>
         </div>
+
+
     </div>
 
-</div>
 
-
-<section class="content-header">
-    <h1>
-        <?php if ($admin_info->status == "D") : ?>
-            Thêm đại lý cấp 2
-        <?php else: ?>
-            Thêm đại lý cấp 1
-        <?php endif; ?>
-
-    </h1>
-    <input type="hidden" value="<?php echo $admin_info->status ?>" id="statususer">
-</section>
-<section class="content">
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-<div class="box-body">
-<form id="form" class="form" enctype="multipart/form-data" method="post" action="">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <label class="control-label" id="errorstatus" style="color: red"></label>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Nick name:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" name="param_name" id="param_name"
-                       placeholder="Nhập nick name">
-            </div>
-            <div class="col-sm-3">
-                <input type="button" value="Tìm kiếm" name="submit"
-                       class="btn btn-primary pull-left" id="searchnickname">
-            </div>
-        </div>
-    </div>
-
-</form>
-
-<div id="info_user" style="display: none">
-<?php if ($admin_info->status == "A") : ?>
-    <input type="hidden" name="username" id="username"
-           value="">
-    <input type="hidden" name="nickname" id="nickname"
-           value="">
-    <input type="hidden" name="email" id="email" value="">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <label for="inputEmail3" class="col-sm-2 control-label">Tên đăng nhập:&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                         style="color: #0000ff" id="lblusername"></label></label>
-            <label for="inputEmail3" class="col-sm-2 control-label">Nick name:&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                         style="color: #0000ff" id="lblnickname"></label></label>
-            <label for="inputEmail3" class="col-sm-2 control-label">Số <?php echo $namegame ?> dư:&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                         style="color: #0000ff" id="lblvin"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Tên đại lý:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="namedaily">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="errorname"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Số điện
-                thoại:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="phonedaily">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="errorphone"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Địa chỉ:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="addressdaily">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="erroradd"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Tên ngân hàng:</label>
-
-            <div class="col-sm-2">
-                <select class="form-control" id="namebank">
-                    <option value="">Chọn</option>
-                    <option value="BIDV">BIDV</option>
-                    <option value="VietinBank">VietinBank</option>
-                    <option value="VietcomBank">VietcomBank</option>
-                    <option value="MSB">MaritimeBank</option>
-                </select>
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="errornamebank"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Tên tài khoản ngân hàng:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="usernamebank">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="erroruserbank"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Số tài khoản ngân hàng:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="numberbank">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label" id="errornumberbank"
-                   style="color: red"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Facebook:</label>
-
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="facebook">
-
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label">Hiển thị trong game:</label>
-
-            <div class="col-sm-2">
-                <input type="checkbox" id="isshow" name="chk" value="0">
-                <input type="hidden" name="displayname" id="displayname" value="">
-            </div>
-            <label for="inputEmail3" class="col-sm-2 control-label"></label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-1 control-label"></label>
-
-            <div class="col-sm-2">
-                <input type="button" id="setdaily1" name="setdaily1"
-                       value="" class="btn btn-primary pull-left">
-
-            </div>
-        </div>
-    </div>
-<?php elseif ($admin_info->status == "D"): ?>
-    <input type="hidden" name="username" id="username"
-           value="">
-    <input type="hidden" name="nickname" id="nickname"
-           value="">
-    <input type="hidden" name="mobile" id="mobile" value="">
-    <input type="hidden" name="email" id="email" value="">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <label for="inputEmail3" class="col-sm-2 control-label">Nick name:&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<label for="inputEmail3" class="control-label"
-                                         style="color: #0000ff" id="lblnickname"></label></label>
-            <label for="inputEmail3" class="col-sm-1 control-label">&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;</label>
-
-            <div class="col-sm-2">
-                <input type="button" id="setdaily2" name="setdaily2"
-                       value="" class="btn btn-primary pull-left">
-
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
-<h3>Lịch sử chuyển dịch hệ thống</h3>
-
-<div class="form-group">
-    <div class="row">
-        <label class="col-sm-1 control-label">Tiền:</label>
-
-        <div class="col-sm-1">
-            <select id="money_type" class="form-control">
-                <option value="vin"><?php echo $namegame ?></option>
-                <option value="xu">Xu</option>
-            </select>
-        </div>
-        <label class="col-sm-1 control-label">Từ ngày:</label>
-
-        <div class="col-sm-2">
-            <div class="input-group date" id="datetimepicker1">
-                <input type="text" class="form-control" id="fromDate"> <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-            </div>
-        </div>
-        <label class="col-sm-1 control-label">Đến ngày:</label>
-
-        <div class="col-sm-2">
-            <div class="input-group date" id="datetimepicker2">
-                <input type="text" class="form-control" id="toDate"> <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-            </div>
-        </div>
-        <div class="col-sm-1"><input type="submit" value="Tìm kiếm" name="submit"
-                                     class="btn btn-primary pull-right" id="search_tran"></div>
-        <div class="col-sm-1"><input type="submit" value="Reset" name="submit"
-                                     class="btn btn-primary pull-left" id="reset"></div>
-    </div>
-</div>
-<div class="col-sm-12">
-    <table id="example2" class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Nickname</th>
-            <th>Số dư</th>
-            <th>Tiền thay dổi</th>
-            <th>Hành động</th>
-            <th>Ngày tạo</th>
-        </tr>
-        </thead>
-        <tbody id="logaction">
-
-        </tbody>
-    </table>
-
-    <div id="spinner" class="spinner" style="display:none;">
-        <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>" alt="Loading"/>
-    </div>
-    <div class="text-center pull-right">
-        <ul id="pagination-demo" class="pagination-lg"></ul>
-        <ul id="pagination-demosearch" class="pagination-lg"></ul>
-    </div>
-    <h1 id="resultsearch"></h1>
 </div>
 </div>
 
 </div>
-</div>
-</div>
-</div>
-</section>
 <style>
     .spinner {
         position: fixed;

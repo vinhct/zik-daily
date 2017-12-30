@@ -1,83 +1,78 @@
-<section class="content-header">
-    <h1>
-        Danh sách giao dịch trong 24h
-    </h1>
-</section>
-<section class="content">
-    <div class="row">
+<h3 class="page-title">
+    Danh sách giao dịch trong 24h
+</h3>
 
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
-
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-1 control-label">Hành động</label>
-
-                            <div class="col-sm-2">
-
-                                    <select id="action" class="form-control">
-                                        <option value="" <?php if ($this->input->post("action") == "") {echo "selected";} ?>>Chọn hành động</option>
-                                        <option value="1"<?php if ($this->input->post("action") == "1") {echo "selected";} ?>>Đóng băng</option>
-                                        <option value="2" <?php if ($this->input->post("action") == "2") {echo "selected";} ?>>Đã mở</option>
-                                        <option value="0" <?php if ($this->input->post("action") == "0") {echo "selected";} ?>>Đã đóng băng</option>
-                                    </select>
-
-                            </div>
-                            <div class="col-sm-1"><input type="submit" value="Tìm kiếm" name="submit"
-                                                         class="btn btn-primary pull-right" id="search_tran"></div>
-                            <div class="col-sm-1"><input type="reset" value="Reset" name="submit"
-                                                         class="btn btn-primary pull-left" id="reset"
-                                                         onclick="window.location.href = '<?php echo base_url('freeze') ?>'; ">
-                            </div>
-                        </div>
-                    </div>
-            <div class="row">
-                <input type="hidden" value="<?php echo $admin_info->nickname ?>" id="nickname" name="nickname">
-                <input type="hidden" value="<?php echo $admin_info->status ?>" id="statususer"
-                       name="statususer">
-
-                <div class="col-sm-12">
-                    <?php if (isset($message) && $message): ?>
-                        <?php echo $message ?>
-                    <?php endif; ?>
-                </div>
-                <div class="col-sm-12">
-                    <div class="error" style="margin-bottom: 10px;color: #ff0000;font-size: 14px"></div>
-                    <table id="example2" class="table table-bordered table-hover" style="table-layout: fixed;word-wrap: break-word;">
-                        <thead>
-                        <tr>
-                            <th style="width:3%">STT</th>
-                            <th style="width:10%">TK chuyển</th>
-                            <th style="width:10%">TK nhận</th>
-                            <th style="width:7%">Số <?php echo $namegame ?> gửi</th>
-                            <th style="width:7%">Số <?php echo $namegame ?> nhận</th>
-                            <th style="width:5%">Phí</th>
-                            <th style="width:20%">Mô tả</th>
-                            <th style="width:20%">Trạng thái</th>
-                            <th style="width:15%">Thời gian</th>
-                            <th style="width:10%">Hành động</th>
-                        </tr>
-                        </thead>
-                        <tbody id="logaction">
-                        </tbody>
-                    </table>
-                    <div id="spinner" class="spinner" style="display:none;">
-                        <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
-                             alt="Loading"/>
-                    </div>
-                    <div class="text-center pull-right">
-                        <ul id="pagination-demo" class="pagination-lg"></ul>
-                    </div>
-                    <h1 id="resultsearch"></h1>
-                </div>
+<div class="row">
+<div class="col-md-12">
+<div class="panel">
+<div class="panel-heading">
+    <?php $this->load->view('admin/message', $this->data); ?>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <label for="exampleInputEmail1" id="error" style="color: red"></label>
             </div>
         </div>
+        <input type="hidden" value="<?php echo $admin_info->nickname ?>" id="nickname" name="nickname">
+        <input type="hidden" value="<?php echo $admin_info->status ?>" id="statususer"
+               name="statususer">
     </div>
-    </div>
-    </div>
-</section>
 
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Hành động :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <select id="action" class="form-control">
+                        <option value="" <?php if ($this->input->post("action") == "") {echo "selected";} ?>>Chọn hành động</option>
+                        <option value="1"<?php if ($this->input->post("action") == "1") {echo "selected";} ?>>Đóng băng</option>
+                        <option value="2" <?php if ($this->input->post("action") == "2") {echo "selected";} ?>>Đã mở</option>
+                        <option value="0" <?php if ($this->input->post("action") == "0") {echo "selected";} ?>>Đã đóng băng</option>
+                    </select>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <input type="submit" value="Tìm kiếm" name="submit"
+                           class="btn btn-success" id="search_tran">
+                </div>
+
+
+
+            </div>
+        </div>
+
+</div>
+<div class="panel-body">
+    <table id="example2" class="table table-bordered table-hover" style="table-layout: fixed;word-wrap: break-word;">
+        <thead>
+        <tr>
+            <th >STT</th>
+            <th >TK chuyển</th>
+            <th >TK nhận</th>
+            <th >Số <?php echo $namegame ?> gửi</th>
+            <th >Số <?php echo $namegame ?> nhận</th>
+            <th >Phí</th>
+            <th >Mô tả</th>
+            <th >Trạng thái</th>
+            <th >Thời gian</th>
+            <th >Hành động</th>
+        </tr>
+        </thead>
+        <tbody id="logaction">
+        </tbody>
+    </table>
+    <div id="spinner" class="spinner" style="display:none;">
+        <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+             alt="Loading"/>
+    </div>
+    <div class="text-center pull-right">
+        <ul id="pagination-demo" class="pagination-lg"></ul>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
 <script>
     $(document).ready(function () {
         $("#spinner").show();

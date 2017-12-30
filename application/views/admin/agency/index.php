@@ -30,7 +30,7 @@
                             <th>Điện thoại</th>
                             <th>Địa chỉ</th>
                             <th>Trạng thái</th>
-                            <th>Số dư Zum</th>
+                            <th>Số dư <?php echo $namegame ?></th>
                             <th>Két sắt</th>
                             <th>Vippoint</th>
                             <th>Vippoint tích lũy</th>
@@ -43,11 +43,11 @@
                             <th>Địa chỉ</th>
                             <?php if ($status == "A") : ?>
                                 <th>Trạng thái</th>
-                                <th>Số dư Zum</th>
+                                <th>Số dư <?php echo $namegame ?></th>
                                 <th>Két sắt</th>
                                 <th>Vippoint</th>
                                 <th>Vippoint tích lũy</th>
-                                <th>Tổng Zum</th>
+                                <th>Tổng <?php echo $namegame ?></th>
                             <?php endif; ?>
                             <th>Doanh số</th>
                             <th>Hành động</th>
