@@ -209,7 +209,8 @@
                  alt="Loading"/>
         </div>
         <div class="text-center pull-right">
-            <ul id="pagination-demo" class="pagination-lg"></ul>
+            <ul id="pagination-demo" class="pagination-sm"></ul>
+            <ul id="pagination-demosearch" class="pagination-sm"></ul>
         </div>
 
     </div>
@@ -390,7 +391,7 @@ function listAgent() {
             $("#num").html(countrow);
             if (data.transactions == "") {
                 $('#pagination-demo').css("display", "none");
-                $("#resultsearch").html("Không tìm thấy kết quả");
+                $("#error").html("Không tìm thấy kết quả");
                 $('#logaction').html(result);
             } else {
                 stt = 1;
@@ -404,7 +405,7 @@ function listAgent() {
                     stt++
                 });
                 $('#logaction').html(result);
-                $("#resultsearch").html("");
+                $("#error").html("");
                 $('#pagination-demo').css("display", "block");
                 $('#pagination-demo').twbsPagination({
                     totalPages: data.total,
@@ -480,7 +481,7 @@ function listTranferAdmin() {
                 $("#spinner").hide();
                 if (data.transactions == "") {
                     $('#pagination-demo').css("display", "none");
-                    $("#resultsearch").html("Không tìm thấy kết quả");
+                    $("#error").html("Không tìm thấy kết quả");
                     $('#logaction').html(result);
                 } else {
                     stt = 1;
@@ -499,7 +500,7 @@ function listTranferAdmin() {
                     //click page
                     var countrow = data.totalRecord;
                     $("#num").html(countrow);
-                    $("#resultsearch").html("");
+                    $("#error").html("");
                     $('#pagination-demosearch').css("display", "none");
                     $('#pagination-demo').twbsPagination({
                         totalPages: data.total,
@@ -526,7 +527,7 @@ function listTranferAdmin() {
                                         $("#error").html("");
                                         if (data.transactions == "") {
                                             $('#pagination-demo').css("display", "none");
-                                            $("#resultsearch").html("Không tìm thấy kết quả");
+                                            $("#error").html("Không tìm thấy kết quả");
                                             $('#logaction').html(result);
                                         } else {
                                             stt = 1;
@@ -582,14 +583,14 @@ function listTranferAdmin() {
                 $("#spinner").hide();
                 var countrow = result.totalRecord;
                 $("#num").html(countrow);
-                $("#resultsearch").html("");
+
                 $('#pagination-demosearch').css("display", "none");
                 $('#pagination-demo').css("display", "block");
                 $("#spinner").hide();
 
                 if (data.transactions == "") {
                     $('#pagination-demo').css("display", "none");
-                    $("#resultsearch").html("Không tìm thấy kết quả");
+                    $("#error").html("Không tìm thấy kết quả");
                     $('#logaction').html(result);
                 } else {
                     stt = 1;
@@ -629,7 +630,7 @@ function listTranferAdmin() {
                                         $("#error").html("");
                                         if (data.transactions == "") {
                                             $('#pagination-demo').css("display", "none");
-                                            $("#resultsearch").html("Không tìm thấy kết quả");
+                                            $("#error").html("Không tìm thấy kết quả");
                                             $('#logaction').html(result);
                                         } else {
                                             stt = 1;

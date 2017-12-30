@@ -36,6 +36,10 @@
                 </div>
             </div>
         </div>
+        <div id="spinner" class="spinner" style="display:none;">
+            <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+                 alt="Loading"/>
+        </div>
         <div id="info_user" style="display: none">
             <?php if ($admin_info->status == "A") : ?>
                 <input type="hidden" name="username" id="username"
@@ -221,32 +225,7 @@
 </div>
 
 </div>
-<style>
-    .spinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        overflow: auto;
-        width: 100px; /* width of the spinner gif */
-        height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
 
-    #resultsearch {
-        position: fixed;
-        top: 100%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        width: 400px; /* width of the spinner gif */
-        height: 100px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
-</style>
 
 <script type="text/javascript">
     $(function () {

@@ -246,9 +246,9 @@
                 if (data.listTranfer == "") {
                     $("#logaction").html("");
                     $('#pagination-demo').css("display", "none");
-                    $("#resultsearch").html("Không tìm thấy kết quả");
+                    $("#error").html("Không tìm thấy kết quả");
                 } else {
-                    $("#resultsearch").html("");
+                    $("#error").html("");
 					if(oldpage==1){
 						 stt = 1;
 							$.each(data.listTranfer, function (index, value) {
@@ -317,7 +317,7 @@
                 if (data.listTranfer == "") {
                     $("#logaction").html("");
                     $('#pagination-demo').css("display", "none");
-                    $("#resultsearch").html("Không tìm thấy kết quả");
+                    $("#error").html("Không tìm thấy kết quả");
                 } else {
 					if(oldpage==1){
 						 stt = 1;

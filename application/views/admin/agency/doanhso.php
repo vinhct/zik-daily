@@ -242,7 +242,7 @@ function listdoanhsoAgent(nickname, type, id) {
         success: function (data) {
             $("#spinner").hide();
             $("#error").html("");
-            $("#resultsearch").html("");
+
 
             $.each(data.transactions, function (index, value) {
                 if (type == 1) {
@@ -330,7 +330,7 @@ function listdoanhsoAdmin(nickname, type, id) {
         success: function (data) {
             $("#spinner").hide();
             $("#error").html("");
-            $("#resultsearch").html("");
+
             $.each(data.transactions, function (index, value) {
                 if (type == 1) {
                     rs += resulttranferlistAdmin(stt, value.nickName, value.totalBuy1, value.totalSale1, value.totalBuy2, value.totalSale2, value.totalFeeBuy1, value.totalFeeSale1, value.totalFeeBuy2, value.totalFeeSale2, value.totalFee, "Đại lý cấp 1", value.totalFeeByVinCash, value.totalFeeByVinplayCard, value.percent);

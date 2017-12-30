@@ -1,119 +1,120 @@
-
-
-
-
-
-
-
-<section class="content-header">
-    <h1>
-        Lịch sử giao dịch trong game
-    </h1>
-</section>
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
-
-                    <h4 id="resultsearch" style="color: red"></h4>
-                    <div class="form-group">
-                        <div class="row">
-                            <label id="labelvin" class="col-sm-1 control-label">Nickname</label>
-
-                            <div class="col-sm-2">
-                                <input type="text" id="filter_iname" value="<?php echo $this->input->get('name') ?>" name="name" class="form-control">
-                            </div>
-                            <label id="labelvin" class="col-sm-1 control-label">Tiền</label>
-
-                            <div class="col-sm-2">
-                                <select id="money_type" name="money" class="form-control">
-                                    <option value="vin"><?php echo $namegame ?></option>
-                                    <option value="xu">Xu</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-1 control-label">Từ ngày:</label>
-
-                            <div class="col-sm-2">
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" class="form-control" id="fromDate" value="<?php echo $start_time?>"> <span
-                                        class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                </div>
-                            </div>
-                            <label class="col-sm-1 control-label">Đến ngày:</label>
-
-                            <div class="col-sm-2">
-                                <div class="input-group date" id="datetimepicker2">
-                                    <input type="text" class="form-control" id="toDate" value="<?php echo $end_time?>"> <span
-                                        class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-</span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1"><input type="submit" value="Tìm kiếm" name="submit"
-                                                         class="btn btn-primary pull-right" id="search_tran"></div>
-                            <div class="col-sm-1"><input type="reset" value="Reset" name="submit"
-                                                         class="btn btn-primary pull-left" id="reset"
-                                                         onclick="window.location.href = '<?php echo base_url('user/transaction') ?>'; ">
-                            </div>
-
-                        </div>
-                    </div>
-					<div style="width: 100%;float: left;color: #ff0000;" id="error"></div>
-                    <div class="col-sm-12">
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Nickname</th>
-                                <th>Số dư</th>
-                                <th>Tiền thay đổi</th>
-                                <th>Hành động</th>
-                                <th>Ngày tạo</th>
-                            </tr>
-                            </thead>
-                            <tbody id="logaction">
-
-                            </tbody>
-                        </table>
-
-                        <div id="spinner" class="spinner" style="display:none;">
-                            <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
-                                 alt="Loading"/>
-                        </div>
-                        <div class="text-center pull-right">
-                            <ul id="pagination-demosearch" class="pagination-lg"></ul>
-                        </div>
-
-                    </div>
-                </div>
+<h3 class="page-title">
+    Lịch sử giao dịch trong game
+</h3>
+<div class="row">
+<div class="col-md-12">
+<div class="panel">
+<div class="panel-heading">
+    <?php $this->load->view('admin/message', $this->data); ?>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <label for="exampleInputEmail1" id="resultsearch" style="color: red"></label>
             </div>
         </div>
     </div>
-</section>
-<style>
-    .spinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px; /* half width of the spinner gif */
-        margin-top: -50px; /* half height of the spinner gif */
-        text-align: center;
-        z-index: 1234;
-        overflow: auto;
-        width: 100px; /* width of the spinner gif */
-        height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
-    }
 
-</style>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Nickname :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <input type="text" id="filter_iname" value="<?php echo $this->input->get('name') ?>" name="name" class="form-control">
+                </div>
+                <input type="hidden" id="hdnnickname" class="form-control"
+                       value="<?php echo $nickname ?>">
+
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Tiền :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <select id="money_type" name="money" class="form-control">
+                        <option value="vin"><?php echo $namegame ?></option>
+                        <option value="xu">Xu</option>
+                    </select>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Từ ngày :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control"
+                               id="fromDate" name="fromDate"
+                               value="<?php echo $start_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <label for="exampleInputEmail1">Đến ngày :</label>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input type='text' class="form-control"
+                               id="toDate" name="toDate"
+                               value="<?php echo $end_time ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <input type="submit" value="Tìm kiếm" name="submit"
+                           class="btn btn-success" id="search_tran">
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-12">
+                    <input type="button" value="Xuất Exel" name="submit"
+                           class="btn btn-success" id="exportexel">
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+<div class="panel-body">
+
+
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Nickname</th>
+            <th>Số dư</th>
+            <th>Tiền thay đổi</th>
+            <th>Hành động</th>
+            <th>Ngày tạo</th>
+        </tr>
+        </thead>
+        <tbody id="logaction">
+
+        </tbody>
+    </table>
+
+    <div id="spinner" class="spinner" style="display:none;">
+        <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+             alt="Loading"/>
+    </div>
+    <div class="text-center pull-right">
+        <ul id="pagination-demosearch" class="pagination-sm"></ul>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 <script>
     $(function () {
         $('#datetimepicker1').datetimepicker({
@@ -145,7 +146,7 @@
                 },
                 dataType: 'json',
                 success: function (res) {
-					$("#error").html("");
+
                         if(res == 1){
                             $("#resultsearch").html("Không tìm thấy kết quả");
                         }else{
@@ -168,7 +169,7 @@
                                 dataType: 'json',
                                 success: function (result) {
                                     $("#spinner").hide();
-									$("#error").html("");
+
                                     var totalPage = result.totalPages;
                                     console.log(totalPage);
                                     if (result.transactions == "") {
@@ -199,7 +200,7 @@
                                                     dataType: 'json',
                                                     success: function (result) {
                                                         $("#spinner").hide();
-														$("#error").html("");
+
                                                         stt = 1
                                                         $.each(result.transactions, function (index, value) {
                                                             result += resultSearchTransction(stt, value.nickName, commaSeparateNumber(value.currentMoney), commaSeparateNumber(value.moneyExchange), value.serviceName,value.transactionTime);
@@ -209,7 +210,7 @@
                                                     }
 													,error: function(){
 														$("#spinner").hide();
-														$("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
+														$("#resultsearch").html("Kết nối không ổn định.Vui lòng thử lại sau");
 													},
 													timeout:30000
                                                 });
@@ -225,14 +226,14 @@
                                 }
 								,error: function(){
 										$("#spinner").hide();
-										$("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
+										$("#resultsearch").html("Kết nối không ổn định.Vui lòng thử lại sau");
 									},
 									timeout:30000
                             })
                         }
                 },error: function(){
 										$("#spinner").hide();
-										$("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
+										$("#resultsearch").html("Kết nối không ổn định.Vui lòng thử lại sau");
 									},
 									timeout:30000
             });
