@@ -1,100 +1,104 @@
+<h3 class="page-title">
+    Xuất giftcode
+</h3>
 
-<section class="content-header">
-    <h1>
-        Xuất giftcode
-    </h1>
-</section>
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="form-group successful">
-                        <div class="row">
-                            <div class="col-sm-3">
-                            </div>
-                            <label class="control-label col-sm-2" id="successgift" style="color: #00a65a"></label>
-                        </div>
-                    </div>
-                    <div class="form-group successful">
-                        <div class="row">
-                            <div class="col-sm-3">
-                            </div>
-                            <label class="control-label col-sm-4" id="errorgift" style="color: red"></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-2">
-                            </div>
-                            <label id="labelvin" class="col-sm-1 control-label">Mệnh giá</label>
 
-                            <div class="col-sm-2" id="menhgiavin">
-                                <select name="menhgiavin" class="form-control" id="roomvin">
-                                    <option value="">Chọn</option>
-                                    <?php foreach($listvin as $key => $row): ?>
-                                        <option value="<?php echo $row ?>"><?php echo $row."K <?php echo $namegame ?>" ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-2">
-                            </div>
-                            <label class="col-sm-1 control-label">Số lượng:</label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
 
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="soluong" placeholder="Bạn chỉ được xuất tối đa 10 giftcode">
-                            </div>
-                            <label class="col-sm-2" id="errorsl" style="color: red"></label>
+            <div class="panel-body">
+                <div class="form-group successful">
+                    <div class="row">
+                        <div class="col-sm-3">
                         </div>
+                        <label class="control-label col-sm-2" id="successgift" style="color: #00a65a"></label>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-2">
-                            </div>
-                            <label class="col-sm-1 control-label">Đợt phát hành:</label>
-
-                            <div class="col-sm-2">
-                                <select id="phathanh" class="form-control">
-                                    <option value="">Chọn</option>
-                                    
-                                        <option value="1">Đợt 1</option>
-                                  
-                                </select>
-                            </div>
-                            <label class="col-sm-2" id="errorph" style="color: red"></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-2">
-                            </div>
-                            <label class="col-sm-1 control-label">Mã otp:</label>
-
-                            <div class="col-sm-1">
-                                <select id="selectotp" class="form-control">
-                                    <option value="0">OTP SMS</option>
-                                    <option value="1">OTP APP</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-1">
-                                <input id="txtotp" type="text" class="form-control" placeholder="Mã OTP" maxlength="5">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-3">
-                            </div>
-                            <div class="col-sm-1"><input type="submit" value="Thêm giftcode" name="submit"
-                                                         class="btn btn-primary pull-left" id="search_tran"></div>
-                        </div>
-                    </div>
-
                 </div>
+                <div class="form-group successful">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <label class="control-label col-sm-4" id="errorgift" style="color: red"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <label id="labelvin" class="col-sm-1 control-label">Mệnh giá</label>
+
+                        <div class="col-sm-2" id="menhgiavin">
+                            <select name="menhgiavin" class="form-control" id="roomvin">
+                                <option value="">Chọn</option>
+                                <?php foreach($listvin as $key => $row): ?>
+                                    <option value="<?php echo $row ?>"><?php echo $row."K <?php echo $namegame ?>" ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <label class="col-sm-1 control-label">Số lượng:</label>
+
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="soluong" placeholder="Bạn chỉ được xuất tối đa 10 giftcode">
+                        </div>
+                        <label class="col-sm-2" id="errorsl" style="color: red"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <label class="col-sm-1 control-label">Đợt phát hành:</label>
+
+                        <div class="col-sm-2">
+                            <select id="phathanh" class="form-control">
+                                <option value="">Chọn</option>
+
+                                <option value="1">Đợt 1</option>
+
+                            </select>
+                        </div>
+                        <label class="col-sm-2" id="errorph" style="color: red"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <label class="col-sm-1 control-label">Mã otp:</label>
+
+                        <div class="col-sm-1">
+                            <select id="selectotp" class="form-control">
+                                <option value="0">OTP SMS</option>
+                                <option value="1">OTP APP</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-1">
+                            <input id="txtotp" type="text" class="form-control" placeholder="Mã OTP" maxlength="5">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-1"><input type="submit" value="Thêm giftcode" name="submit"
+                                                     class="btn btn-success pull-left" id="search_tran"></div>
+                    </div>
+                </div>
+                <div id="spinner" class="spinner" style="display:none;">
+                    <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>"
+                         alt="Loading"/>
+                </div>
+
+
+
             </div>
             <div class="modal fade" id="bsModal3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                  aria-hidden="true">
@@ -112,9 +116,12 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
-</section>
+
+</div>
 <div id="spinner" class="spinner" style="display:none;">
     <img id="img-spinner" src="<?php echo public_url('admin/images/gif-load.gif') ?>" alt="Loading"/>
 </div>

@@ -91,14 +91,14 @@
                 <?php if($admin_info->status == "D"): ?>
 
                     <li>
-                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Giftcode</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-dice"></i> <span>Giftcode</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
-                                <li><a href="<?php echo base_url("agency/addgiftcode") ?>"><i class="fa fa-circle-o"></i> Xuất giftcode</a></li>
-                                <li><a href="<?php echo base_url("agency/giftcode") ?>"><i class="fa fa-circle-o"></i> Danh sách giftcode</a></li>
-                                <li><a href="<?php echo base_url("agency/giftcodeuse") ?>"><i class="fa fa-circle-o"></i> Thông kê giftcode trong kho</a></li>
-                                <li><a href="<?php echo base_url("agency/usergiftcode") ?>"><i class="fa fa-circle-o"></i> Tài khoản sử dụng giftcode</a></li>
-                                <li><a href="<?php echo base_url("agency/nicknameusegiftcode") ?>"><i class="fa fa-circle-o"></i> Thống kê giftcode đã dùng</a></li>
+                                <li><a href="<?php echo base_url("agency/addgiftcode") ?>"> Xuất giftcode</a></li>
+                                <li><a href="<?php echo base_url("agency/giftcode") ?>"> Danh sách giftcode</a></li>
+                                <li><a href="<?php echo base_url("agency/giftcodeuse") ?>"> Thông kê giftcode trong kho</a></li>
+                                <li><a href="<?php echo base_url("agency/usergiftcode") ?>"> Tài khoản sử dụng giftcode</a></li>
+                                <li><a href="<?php echo base_url("agency/nicknameusegiftcode") ?>"> Thống kê giftcode đã dùng</a></li>
                             </ul>
                         </div>
                     </li>

@@ -20,6 +20,9 @@
 <script src="<?php echo public_url('admin') ?>/assets/scripts/klorofil-common.js"></script>
 <script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="<?php echo public_url('admin') ?>/plugins/jQuery//jquery.dataTables.min.css">
+<script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.validate.min.js"></script>
+<script src="<?php echo public_url('admin') ?>/dist/js/validate_tranfer.js"></script>
+<link rel="icon" type="image/png" sizes="96x96" href="<?php echo public_url('admin') ?></assets/img/favicon.ico">
 
 <script>
     $('a.verify_action').click(function(){

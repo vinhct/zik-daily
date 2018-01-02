@@ -18,7 +18,7 @@
     <script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.validate.min.js"></script>
     <script src="<?php echo public_url('admin') ?>/dist/js/validate_login.js"></script>
      <script src="<?php echo public_url('admin') ?>/dist/js/base64.js"></script>
-<!--    <link rel="icon" type="image/png" sizes="96x96" href="--><?php //echo public_url('admin') ?><!--/assets/img/favicon.ico">-->
+   <link rel="icon" type="image/png" sizes="96x96" href="<?php echo public_url('admin') ?></assets/img/favicon.ico">
 </head>
 <body>
 <div id="wrapper">
@@ -30,7 +30,7 @@
                 <div class="left">
                     <div class="content">
                         <div class="header">
-                            <div class="logo text-center"><img src="<?php echo public_url("admin") ?>/assets/img/unnamed1.png" width="60" height="60">
+                            <div class="logo text-center"><img src="<?php echo public_url("admin") ?>/assets/img/unnamed.png" width="60" height="60">
                             </div>
                             <h3 style="color:blue">Đại lý <?php echo $namegame ?>Club</h3>
                             <h5 style="color: red" id="validate-text"></h5>
@@ -266,6 +266,8 @@
                          if(res==0)
                          {
                             window.location.href = "<?php  echo base_url()?>";
+                         }else{
+                             $("#error").html("Tài khoản chưa được phân quyền");
                          }
                         }
                     });

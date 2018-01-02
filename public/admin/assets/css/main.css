@@ -1023,7 +1023,7 @@ ul.activity-list > li {
     float: left;
     width: 99%;
     height: 100%;
-    padding: 0 450px;
+    padding: 0 300px;
     text-align: center; }
     .auth-box .left:before {
       display: inline-block;
@@ -1792,5 +1792,9 @@ ul.activity-timeline > li {
     overflow: auto;
     width: 100px; /* width of the spinner gif */
     height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+.tranfer-error {
+    color: #FF0000; /* red */
+    font-weight: normal;
 }
 /*# sourceMappingURL=main.css.map */

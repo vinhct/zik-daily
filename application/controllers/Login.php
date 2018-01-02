@@ -44,7 +44,7 @@ Class Login extends MY_controller
         $where = array('nickname' => $nickname, 'active' => 1);
         $user = $this->useragent_model->get_info_rule($where);
         if ($user == false) {
-            echo json_encode("Tài khoản chưa được phân quyền hoặc đang bị khóa");
+            echo json_encode("1");
         } else {
 
             $this->session->set_userdata("vin", $vin);
