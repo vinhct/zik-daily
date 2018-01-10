@@ -6,7 +6,7 @@
     <title>Đại lý <?php echo $namegame ?>Club| Log in</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?php echo public_url("admin") ?>/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo public_url('admin')?>/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo public_url('admin') ?>/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo public_url("admin") ?>/assets/vendor/linearicons/style.css">
     <link rel="stylesheet" href="<?php echo public_url("admin") ?>/assets/css/main.css">
     <link rel="stylesheet" href="<?php echo public_url("admin") ?>/assets/css/demo.css">
@@ -17,8 +17,8 @@
     <script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.md5.js"></script>
     <script src="<?php echo public_url('admin') ?>/plugins/jQuery/jquery.validate.min.js"></script>
     <script src="<?php echo public_url('admin') ?>/dist/js/validate_login.js"></script>
-     <script src="<?php echo public_url('admin') ?>/dist/js/base64.js"></script>
-   <link rel="icon" type="image/png" sizes="96x96" href="<?php echo public_url('admin') ?></assets/img/favicon.ico">
+    <script src="<?php echo public_url('admin') ?>/dist/js/base64.js"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo public_url('admin') ?></assets/img/favicon.ico">
 </head>
 <body>
 <div id="wrapper">
@@ -27,10 +27,13 @@
             <div class="auth-box ">
                 <input type="hidden" id="nickname">
                 <input type="hidden" id="vintotal">
+
                 <div class="left">
                     <div class="content">
                         <div class="header">
-                            <div class="logo text-center"><img src="<?php echo public_url("admin") ?>/assets/img/unnamed.png" width="60" height="60">
+                            <div class="logo text-center"><img
+                                    src="<?php echo public_url("admin") ?>/assets/img/unnamed.png" width="60"
+                                    height="60">
                             </div>
                             <h3 style="color:blue">Đại lý <?php echo $namegame ?>Club</h3>
                             <h5 style="color: red" id="validate-text"></h5>
@@ -45,13 +48,14 @@
                             <div class="form-group">
                                 <label for="signin-password" class="control-label sr-only">Password</label>
                                 <input type="password" class="form-control" id="param_password" name="password"
-                                      placeholder="Mật khẩu">
+                                       placeholder="Mật khẩu">
                             </div>
                             <div class="form-group clearfix">
 
 
                             </div>
                             <input type="button" value="Đăng nhập" id="login" class="btn btn-success btn-lg btn-block">
+
                             <div id="flag" style="display: none"><?php echo $flag ?></div>
                             <div class="bottom">
 
@@ -69,6 +73,7 @@
                             <input type="hidden" id="hndvippoint" name="hndvippoint" value="">
                             <input type="hidden" id="hndvippointsave" name="hndvippointsave" value="">
                             <input type="hidden" id="hdnaccesstoken" name="hdnaccesstoken" value="">
+
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-hidden="true">&times;</button>
@@ -86,9 +91,11 @@
 
 
                             <div class="modal-footer">
-                                <input type="hidden" id="hdnusername" name="hdnusername" value="<?php echo $nickname ?>">
+                                <input type="hidden" id="hdnusername" name="hdnusername"
+                                       value="<?php echo $nickname ?>">
                                 <input type="button" class="btn btn-success pull-left" value="Lấy ODP" id="getodp">
-                                <input type="button" class="btn btn-success pull-right" value="Lấy lại ODP" id="getreodp">
+                                <input type="button" class="btn btn-success pull-right" value="Lấy lại ODP"
+                                       id="getreodp">
                             </div>
 
                         </div>
@@ -125,8 +132,6 @@
 </style>
 
 
-
-
 <script>
     $(document).ready(function () {
         if ($("#flag").text() == 1) {
@@ -135,23 +140,21 @@
             return false;
         }
     });
-    $("#login").click(function(){
-        if($("#param_username").val()=="")
-        {
+    $("#login").click(function () {
+        if ($("#param_username").val() == "") {
             $("#validate-text").html("Username không được để trống");
             $("#param_username").focus();
             return false;
         }
-        else if($("#param_password").val()=="")
-        {
+        else if ($("#param_password").val() == "") {
             $("#validate-text").html("Password không được để trống");
             $("#param_password").focus();
             return false;
         }
-        else{
-             $("#validate-text").html("");
-             //call ajax
-              $.getJSON({
+        else {
+            $("#validate-text").html("");
+            //call ajax
+            $.getJSON({
                 type: "post",
                 url: "<?php echo base_url('login/acceptlogin')?>",
                 data: {
@@ -160,78 +163,90 @@
                 },
                 dataType: 'json',
                 success: function (data) {
-                   
-                    if(data.errorCode=="0")
-                    {
-                        var sess=data.sessionKey;
-                        var info =$.parseJSON(Base64.decode(sess));
+
+                    if (data.errorCode == "0") {
+                        var sess = data.sessionKey;
+                        var info = $.parseJSON(Base64.decode(sess));
                         $("#hdnusername").val(info.nickname);
                         $("#hndvin").val(info.vinTotal);
                         $("#hndvippoint").val(info.vippoint);
                         $("#hndvippointsave").val(info.vippointSave);
                         $("#hdnaccesstoken").val(data.accessToken);
+//                        $.ajax({
+//                            type: "POST",
+//                            url: "<?php //echo base_url('login/saveUserLogin')?>//",
+//                            data: {
+//                                hdnusername: $("#hdnusername").val(),
+//                                hndvin: $("#hndvin").val(),
+//                                hndvippoint: $("#hndvippoint").val(),
+//                                hndvippointsave: $("#hndvippointsave").val(),
+//                                hdnaccesstoken: $("#hdnaccesstoken").val()
+//                            },
+//                            dataType: 'json',
+//                            success: function (res) {
+//                                if (res == 0) {
+//                                    window.location.href = "<?php // echo base_url()?>//";
+//                                } else {
+//                                    $("#validate-text").html("Tài khoản chưa được phân quyền");
+//                                }
+//                            }
+//                        });
+
+
                         $("#bsModal3").modal('show');
                     }
-                   else if (data.errorCode == "1001") {
-                    $("#validate-text").html('Bạn không có quyền truy cập');
+                    else if (data.errorCode == "1001") {
+                        $("#validate-text").html('Bạn không có quyền truy cập');
                     } else if (data.errorCode == "1005") {
-                        $("#validate-text").html( 'Tên đăng nhập không tồn tại');
+                        $("#validate-text").html('Tên đăng nhập không tồn tại');
                     } else if (data.errorCode == "1007") {
-                         $("#validate-text").html( 'Mật khẩu không chính xác');
+                        $("#validate-text").html('Mật khẩu không chính xác');
                     } else if (data.errorCode == "1009") {
-                         $("#validate-text").html('Tài khoản bị khóa');
+                        $("#validate-text").html('Tài khoản bị khóa');
                     }
-                }
-                ,error: function(){
-                     $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
-                    },
-                    timeout:50000
-                
+                }, error: function () {
+                    $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");
+                },
+                timeout: 50000
+
             });
         }
 
 
-
     });
-    $("#getodp").click(function(){
+    $("#getodp").click(function () {
         $.getJSON({
-                type: "post",
-                url: "<?php echo base_url('login/getODP')?>",
-                dataType: 'json',
-                 data: {
-                    hdnusername: $("#hdnusername").val()
-                },
-                success: function (data) {
-                  if(data=="0")
-                  {
+            type: "post",
+            url: "<?php echo base_url('login/getODP')?>",
+            dataType: 'json',
+            data: {
+                hdnusername: $("#hdnusername").val()
+            },
+            success: function (data) {
+                if (data == "0") {
                     $("#error").html("Bạn lấy mã odp thành công");
-                  }
-                 else if(data=="1")
-                  {
-                    $("#error").html("Hệ thống bị gián đoạn");
-                  }
-                 else if(data=="2")
-                  {
-                    $("#error").html("Nickname không tồn tại");
-                  }
-                 else if(data=="4")
-                  {
-                    $("#error").html("Bạn chưa đăng ký bảo mật trên trang <?php echo $namegame ?>.club");
-                  }
-                 else if(data=="5")
-                  {
-                    $("#error").html("Bạn đã lấy odp rồi, gửi tin nhắn để lấy lại");
-                  }
                 }
-                ,error: function(){
-                     $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
-                    },
-                    timeout:50000
-                
-            });
+                else if (data == "1") {
+                    $("#error").html("Hệ thống bị gián đoạn");
+                }
+                else if (data == "2") {
+                    $("#error").html("Nickname không tồn tại");
+                }
+                else if (data == "4") {
+                    $("#error").html("Bạn chưa đăng ký bảo mật trên trang <?php echo $namegame ?>.club");
+                }
+                else if (data == "5") {
+                    $("#error").html("Bạn đã lấy odp rồi, gửi tin nhắn để lấy lại");
+                }
+            }, error: function () {
+                $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");
+            },
+            timeout: 50000
+
+        });
     });
     $("#getreodp").click(function () {
-        $("#error").html("Mời bạn soạn tin nhắn <?php echo $namegame ?> ODP gửi 8079 để lấy lại ODP");
+        $("#error").html("Mời bạn soạn tin nhắn <?php echo $namegame ?> ODP gửi 8098 để lấy lại ODP");
     });
     $("#loginodp").click(function () {
         if ($("#odplogin").val() == "") {
@@ -250,28 +265,27 @@
                 success: function (result) {
                     if (result == 0) {
 
-                       //lưu vào session
-                       $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('login/saveUserLogin')?>",
-                        data: {
-                            hdnusername: $("#hdnusername").val(),
-                            hndvin: $("#hndvin").val(),
-                            hndvippoint: $("#hndvippoint").val(),
-                            hndvippointsave: $("#hndvippointsave").val(),
-							hdnaccesstoken:$("#hdnaccesstoken").val()
-                        },
-                        dataType: 'json',
-                        success: function (res) {
-                         if(res==0)
-                         {
-                            window.location.href = "<?php  echo base_url()?>";
-                         }else{
-                             $("#error").html("Tài khoản chưa được phân quyền");
-                         }
-                        }
-                    });
-                   }
+                        //lưu vào session
+                        $.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url('login/saveUserLogin')?>",
+                            data: {
+                                hdnusername: $("#hdnusername").val(),
+                                hndvin: $("#hndvin").val(),
+                                hndvippoint: $("#hndvippoint").val(),
+                                hndvippointsave: $("#hndvippointsave").val(),
+                                hdnaccesstoken: $("#hdnaccesstoken").val()
+                            },
+                            dataType: 'json',
+                            success: function (res) {
+                                if (res == 0) {
+                                    window.location.href = "<?php  echo base_url()?>";
+                                } else {
+                                    $("#error").html("Tài khoản chưa được phân quyền");
+                                }
+                            }
+                        });
+                    }
                     else if (result == 1) {
                         $("#error").html("Hệ thống bị gián đoạn");
 
@@ -290,12 +304,11 @@
 
                     }
 
-                }
-				,error: function(){
-                     $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          
-                    },
-                    timeout:50000
-				
+                }, error: function () {
+                    $("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");
+                },
+                timeout: 50000
+
             });
         }
     });

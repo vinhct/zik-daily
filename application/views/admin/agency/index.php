@@ -41,6 +41,8 @@
                             <th style="display:none">Email</th>
                             <th>Điện thoại</th>
                             <th>Địa chỉ</th>
+                            <th>Trạng thái</th>
+                            <th>Số dư <?php echo $namegame ?></th>
                             <?php if ($status == "A") : ?>
                                 <th>Trạng thái</th>
                                 <th>Số dư <?php echo $namegame ?></th>
@@ -59,27 +61,7 @@
                         <?php echo $list3; ?>
                     <?php else: ?>
                         <?php if ($status == "D") : ?>
-                            <?php $i = 1; ?>
-                            <?php foreach ($list2 as $row): ?>
-                                <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $row->nameagent ?></td>
-                                    <td>
-                                        <a href="<?php echo base_url('agency/listtranfer/' . $row->nickname) ?>"
-                                           style="color: #37ca1e"><?php echo $row->nickname ?></a></td>
-                                    <td><?php echo $row->email ?></td>
-                                    <td><?php echo $row->phone ?></td>
-                                    <td><?php echo $row->address ?></td>
-                                    <td><a href="<?php echo base_url('agency/doanhso') ?>">Chi
-                                            tiết</a></td>
-                                    <td>
-                                        <a class="verify_action" href="<?php echo base_url('agency/delete/' . $row->id) ?>">
-                                            <img src="<?php echo public_url('admin') ?>/images/delete.png"/>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php $i++; ?>
-                            <?php endforeach; ?>
+                            <?php echo $list2; ?>
                         <?php else: ?>
                             <?php echo $list1; ?>
                         <?php endif; ?>

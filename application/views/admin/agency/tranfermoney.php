@@ -1,3 +1,6 @@
+
+
+
 <h3 class="page-title">
     Chuyển <?php echo $namegame ?>
 </h3>
@@ -21,9 +24,10 @@
         <div class="col-sm-12">
             <label class="control-label pull-left" id="validate-text"
                    for="inputError"><?php echo $errors ?></label>
-            <input type="hidden" id="">
+            <input type="hidden" id="minMoney" value="<?php echo $minMoney ?>">
         </div>
     </div>
+
     <form id="tranfer" action="chuyenvin" method="post" novalidate="novalidate">
         <input type="hidden" id="nicknamesend" name="nicknamesend"
                value="<?php echo $admin_info->nickname ?>">
@@ -148,9 +152,9 @@
             <div class="col-sm-6">
                 <div>
                     <h3>Quy định chuyển khoản</h3>
-                    <h5>+ Giá trị giao dịch tối thiểu: <span style="color: #0000ff">10,000 <?php echo $namegame ?></span>
+                    <h5>+ Giá trị giao dịch tối thiểu: <span style="color: #0000ff"><?php echo $minMoney." ".$namegame ?></span>
                     </h5>
-                    <h5>+ Chi phí giao dịch là: <span style="color: #0000ff">0%</span></h5>
+                    <h5>+ Chi phí giao dịch là: <span style="color: #0000ff" id="feedl">1%</span></h5>
                     <h5>+ Không giới hạn giá trị giao dịch tối đa và số lần giao dịch trong ngày</h5>
                 </div>
                 <div style="color: #0000ff">
@@ -210,6 +214,7 @@
                     data: {},
                     dataType: 'json',
                     success: function (respone) {
+
 						$("#error").html("");
                         if (res == -2) {
 
@@ -217,47 +222,53 @@
                             $("#phichuyen").html("");
                             $("#hdphichuyen").val("");
                             $("#nicknamehd").html("Hệ thống gián đoạn");
+                            $("#feedl").text("1%");
                         }
                         else if (res == -1) {
                             $("#lblphichuyen").html("");
                             $("#phichuyen").html("");
                             $("#hdntranfer").val("");
                             $("#nicknamehd").html("Nick name không tồn tại");
+                            $("#feedl").text("1%");
                         }
                         else if (res == 0) {
 
-                            $fee = Math.round(parseInt($("#vinchuyen").val()) * (1 - respone.ratio_transfer_dl_1).toFixed(2));
-                            $totalchuyen = parseInt($("#vinchuyen").val()) + parseInt($fee);
+                            $fee = respone.ratio_transfer_dl_1;
+                            $totalchuyen = parseInt($("#vinchuyen").val()/$fee);
                             $("#lblphichuyen").html("Số tiền đại lý bị trừ:  ");
 
                             $("#phichuyen").html(format($totalchuyen));
                             $("#hdntranfer").val($totalchuyen);
                             $("#nicknamehd").html("Tài khoản thường");
+                            $("#feedl").text(parseInt((1 - respone.ratio_transfer_dl_1)*100)+"%");
 
                         }
                         else if (res == 1) {
-                            $fee = Math.round(parseInt($("#vinchuyen").val()) * (1 - respone.r_tf_11).toFixed(2));
-                            $totalchuyen = parseInt($("#vinchuyen").val()) + parseInt($fee);
+                            $fee = respone.r_tf_11;
+                            $totalchuyen = parseInt($("#vinchuyen").val()/$fee);
                             $("#lblphichuyen").html("Số tiền đại lý bị trừ:  ");
                             $("#phichuyen").html(format($totalchuyen));
                             $("#hdntranfer").val($totalchuyen);
                             $("#nicknamehd").html("Tài khoản đại lý");
+                            $("#feedl").text((1 - respone.r_tf_11)*100+"%");
                         }
                         else if (res == 2) {
-                            $fee = Math.round(parseInt($("#vinchuyen").val()) * (1 - respone.r_tf_12).toFixed(2));
-                            $totalchuyen = parseInt($("#vinchuyen").val()) + parseInt($fee);
+                            $fee = respone.r_tf_12;
+                            $totalchuyen = parseInt($("#vinchuyen").val()/$fee);
                             $("#lblphichuyen").html("Số tiền đại lý bị trừ:  ");
                             $("#phichuyen").html(format($totalchuyen));
                             $("#hdntranfer").val($totalchuyen);
                             $("#nicknamehd").html("Tài khoản đại lý");
+                            $("#feedl").text((1 - respone.r_tf_12)*100+"%");
                         }
                         else if (res == 100) {
-                            $fee = Math.round(parseInt($("#vinchuyen").val()) * (1 - respone.ratio_transfer_dl_1).toFixed(2));
-                            $totalchuyen = parseInt($("#vinchuyen").val()) + parseInt($fee);
+                            $fee = respone.ratio_transfer_dl_1;
+                            $totalchuyen = parseInt($("#vinchuyen").val()/$fee);
                             $("#lblphichuyen").html("Số tiền đại lý bị trừ:  ");
                             $("#phichuyen").html(format($totalchuyen));
                             $("#hdntranfer").val($totalchuyen);
                             $("#nicknamehd").html("Tài khoản thường");
+                            $("#feedl").text(parseInt((1 - respone.ratio_transfer_dl_1)*100)+"%");
                         }
                     },error: function(){
 										$("#error").html("Kết nối không ổn định.Vui lòng thử lại sau");          

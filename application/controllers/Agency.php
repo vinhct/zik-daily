@@ -24,9 +24,9 @@ Class Agency extends MY_Controller
         $this->data['status'] = $admin_info->status;
         $input = array();
         if ($admin_info->status == "D") {
-            $input['where'] = array("parentid" => $admin_info->id, "active" => 1);
-            $list = $this->useragent_model->get_list($input);
-            $this->data['list2'] = $list;
+//            $input['where'] = array("parentid" => $admin_info->id, "active" => 1);
+//            $list = $this->useragent_model->get_list($input);
+            $this->data['list2'] = $this->get_list_dl2();
 			$list3 = $this->get_list_usertong();
             $this->data['list3'] = $list3;
             $this->data['temp'] = 'admin/agency/index';
@@ -39,6 +39,46 @@ Class Agency extends MY_Controller
         }
         $this->data['errors'] = '';
     }
+
+    function get_list_dl2()
+    {
+        $str = "";
+        $admin_login = $this->session->userdata('user_admindaily_login');
+        $admin_info = $this->useragent_model->get_info($admin_login);
+        $input['where'] = array("parentid" => $admin_info->id, "active" => 1);
+        $lists = $this->useragent_model->get_list($input);
+        if (!empty($lists)) {
+            $i = 1;
+            foreach ($lists as $list) {
+                if ($list->active == 1) {
+                    $optinfo = readURLAPI($this->config->item('api_url') . '?c=407&nn=' . $list->nickname);
+                    $data = json_decode($optinfo);
+                    $info = $data->transactions;
+                    $totalVin =number_format($info->totalVin);
+                    $str .= "<tr>";
+                    $str .= " <td>$i</td>";
+                    $str .= " <td>$list->nameagent</td>";
+                    $str .= " <td>";
+                    $str .= "<a href=" . base_url('agency/listtranfer/' . $list->nickname) . " style='color: #37ca1e'>$list->nickname</a>";
+                    $str .= "</td>";
+                    $str .= " <td style='display:none'>$list->email</td>";
+                    $str .= " <td>$list->phone</td>";
+                    $str .= " <td>$list->address</td>";
+                    $str .= " <td>Đang hoạt động</td>";
+                    $str .= " <td>$totalVin</td>";
+                    $str .= " <td><a href = " . base_url('agency/doanhso/' . $list->nickname . '/' . $list->id) . ">Chi tiết</a>";
+                    $str .= " </td>";
+                    $str .= " <td><a class ='verify_action'href = " . base_url('agency/delete/' . $list->id) . "><img src=" . public_url('admin/images/delete.png') . " /></a>";
+                    $str .= "</td>";
+
+                    $i++;
+                }
+            }
+
+        }
+        return $str;
+    }
+
     function get_list_user()
     {
         $str = "";
@@ -330,7 +370,7 @@ Class Agency extends MY_Controller
 
     function daily2()
     {
-        $num_daily2 = file_get_contents($this->config->item('api_portal').'?c=10');
+        $num_daily2 = file_get_contents($this->config->item('api_portal').'?cd=10');
          $numdl2 = json_decode($num_daily2)->number_dl2;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $info = $this->useragent_model->get_info_admin($this->input->post('username'));
@@ -735,7 +775,8 @@ function  topdoanhsocap2()
 
     function tranfermoney()
     {
-
+        $getconfig = json_decode(file_get_contents($this->config->item('api_url_odp').'?cd=130'));
+        $this->data['minMoney'] = $getconfig->chuyen_vin_min;
 
         $this->data['errors'] = '';
         $this->data['flag'] = '';
@@ -846,7 +887,7 @@ function  topdoanhsocap2()
 
     function giftcode()
     {
-        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?c=10'));
+        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?cd=10'));
         $this->data['listversion'] = $datainfo->giftcode_version;
         $this->data['listvin'] = $datainfo->giftcode_vin;
         $this->data['listxu'] = $datainfo->giftcode_xu;
@@ -856,7 +897,7 @@ function  topdoanhsocap2()
 
     function giftcodeuse()
     {
-        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?c=10'));
+        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?cd=10'));
         $this->data['listvin'] = $datainfo->giftcode_vin;
         $this->data['listxu'] = $datainfo->giftcode_xu;
         $this->data['temp'] = 'admin/agency/giftcodeuse';
@@ -933,7 +974,7 @@ function  topdoanhsocap2()
         $type = $this->input->post('otpselect');
         //check nick name
         $optinfo = file_get_contents($this->config->item('api_url').'?c=716&nn=' . $nnr);
-        $getconfig = json_decode(file_get_contents($this->config->item('api_url_odp').'?c=130'));
+        $getconfig = json_decode(file_get_contents($this->config->item('api_url_odp').'?cd=130'));
         $result1 = trim($optinfo);
         if ($result1 == "100") {
             $message = "Tài khoản thường";
@@ -976,11 +1017,11 @@ function  topdoanhsocap2()
                         $vin = $this->session->userdata('vin');
                         $new_vin = intval($vin) - intval($vinch);
                         $this->session->set_userdata("vin", $new_vin);
-                        echo "<script>alert('Chuyển vin thành công');document.location='tranfermoney'</script>";
+                        echo "<script>alert('Chuyển zum thành công');document.location='tranfermoney'</script>";
                     }
                 }
                 if ($result == "1") {
-                    $message = "Hệ thống gián đoạn.Vui lòng liên hệ 19006896";
+                    $message = "Hệ thống gián đoạn.Vui lòng chờ";
 
                 } else if ($result == "3") {
                     $message = "Chưa đăng ký bảo mật";
@@ -989,10 +1030,10 @@ function  topdoanhsocap2()
                     $message = "Tài khoản không đủ tiền";
 
                 } else if ($result == "5") {
-                    $message = "Tài khoản bị cấm chuyển vin";
+                    $message = "Tài khoản bị cấm chuyển zum";
 
                 } else if ($result == "6") {
-                    $message = "Nick name nhận vin không tồn tại";
+                    $message = "Nick name nhận zum không tồn tại";
 
                 } else if ($result == "7") {
                     $message = "OTP sai";
@@ -1004,7 +1045,7 @@ function  topdoanhsocap2()
                     $message = "Tài khoản đăng ký chưa bảo mật quá 24h";
 
                 } else if ($result == "11") {
-                    $message = "Số vin chuyển từ 1.000.000 Vin đến 100.000.000 Vin ";
+                    $message = "Số vin chuyển từ 1.000.000 Vin đến 100.000.000 Zum ";
 
                 } else if ($result == "12") {
                     $message = "Giao dịch thất bại, Số dư giao dịch của đại lý cấp 1 sau khi giao dịch với Tổng đại lý phải đảm bảo >= 500.000.000 Vin";
@@ -1012,7 +1053,7 @@ function  topdoanhsocap2()
                 }
             }
             else{
-                $message = "Lỗi hệ thống, Vui lòng liên hệ tổng đài 19006896";
+                $message = "Lỗi hệ thống, Vui lòng chờ";
             }
         }
         $this->data['errors'] = $message;
@@ -1025,7 +1066,7 @@ function  topdoanhsocap2()
 
     function addgiftcode()
     {
-        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?c=10'));
+        $datainfo = json_decode(file_get_contents($this->config->item('api_url_odp') . '?cd=10'));
         $this->data['listversion'] = $datainfo->giftcode_version;
         $this->data['listvin'] = $datainfo->giftcode_vin;
         $this->data['listxu'] = $datainfo->giftcode_xu;

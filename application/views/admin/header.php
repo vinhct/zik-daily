@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="brand">
-        <a href="index.html" style="color: #FFF;font-weight: 600;font-size: 20px">Đại lý <?php echo $namegame ?>Club</a>
+        <a href="" style="color: #FFF;font-weight: 600;font-size: 20px">Đại lý <?php echo $namegame ?>Club</a>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">

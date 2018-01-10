@@ -19,7 +19,7 @@ $(function () {
             vinchuyen: {
                 required: true,
                 number: true,
-                min: 10000,
+                min: parseInt($('#minMoney').val()),
                 max: function () {
                     return parseInt($('#vindu').val());
                 }
@@ -35,13 +35,13 @@ $(function () {
                 equalTo: "Nickname nhập lại không giống với nickname"
             },
             hdntranfer: {
-                max: "Số vin bị trừ không vượt quá số dư hiện tại"
+                max: "Số zum bị trừ không vượt quá số dư hiện tại"
             },
             vinchuyen: {
-                required: "Số vin chuyển không được để trống",
-                number: "Số vin chuyển phải là số",
-                min: "Số vin chuyển tối thiểu là 10,000 vin",
-                max: "Số vin chuyển không vượt quá số dư hiện tại"
+                required: "Số zum chuyển không được để trống",
+                number: "Số zum chuyển phải là số",
+                min: "Số zum chuyển tối thiểu là " + $('#minMoney').val() + " zum",
+                max: "Số zum chuyển không vượt quá số dư hiện tại"
             },
 
             reasonchuyen: "Lý do chuyển không được để trống",

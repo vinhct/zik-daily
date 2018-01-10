@@ -53,6 +53,7 @@ Class Login extends MY_controller
             $this->session->set_userdata('user_admindaily_login', $user->id);
 			 $this->session->set_userdata('accessToken', $accessToken);
               $this->session->set_userdata("nickname", $nickname);
+            echo json_encode("0");
         }
     }
 
@@ -72,7 +73,7 @@ Class Login extends MY_controller
     function  getODP()
     {
         $nickname= $this->input->post('hdnusername');
-        $optinfo = $this->curl->simple_get($this->config->item('api_url_odp') . '?c=131&nn=' . $nickname);
+        $optinfo = $this->curl->simple_get($this->config->item('api_url_odp') . '?cd=131&nn=' . $nickname);
          if ($optinfo) {
             echo $optinfo;
         } else {
@@ -90,7 +91,7 @@ Class Login extends MY_controller
         $vippointsave = $this->input->post('hndvippointsave');
         $this->data['vintotal'] = '';
         $message='';
-        $odpinfo = file_get_contents($this->config->item('api_url_odp') . '?c=132&nn=' . $nickname . '&otp=' . $otp.'&vin='.$vin);
+        $odpinfo = file_get_contents($this->config->item('api_url_odp') . '?cd=132&nn=' . $nickname . '&otp=' . $otp.'&vin='.$vin);
 
         if ($odpinfo) {
             echo $odpinfo;
@@ -105,7 +106,7 @@ Class Login extends MY_controller
         $vippoint = $this->input->post('hndvippoint');
         $vippointsave = $this->input->post('hndvippointsave');
         $this->infouser($nickname, $vin,$vippoint,$vippointsave,$hdnaccesstoken);
-        echo "0";
+       // echo "0";
     }
 	function log_login_admin($username,$action,$status){
         $this->load->model('admin_model');

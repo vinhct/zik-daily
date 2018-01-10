@@ -218,7 +218,7 @@ Class TranferAjax extends MY_Controller
         $page = $this->input->post('page');
         $like = $this->input->post('like');
 		 $record = $this->input->post('record');
-        $optinfo = $this->curl->simple_get($this->config->item('api_url2') . '?c=3&nn=' . $nickname . '&un=&ts=' . urlencode($timestart) . '&te=' . urlencode($timeend) . '&mt=' . $moneytype . '&ag=' . $actiongame . '&sn=' . $servicename . '&p=' . $page . '&lk=' . $like.'&tr='.$record);
+        $optinfo = $this->curl->simple_get($this->config->item('api_url2') . '?cd=3&nn=' . $nickname . '&un=&ts=' . urlencode($timestart) . '&te=' . urlencode($timeend) . '&mt=' . $moneytype . '&ag=' . $actiongame . '&sn=' . $servicename . '&p=' . $page . '&lk=' . $like.'&tr='.$record);
         if ($optinfo) {
             echo $optinfo;
         } else {
@@ -370,7 +370,7 @@ Class TranferAjax extends MY_Controller
 
     function getfee()
     {
-        $optinfo = $this->curl->simple_get($this->config->item('api_url_odp') . '?c=130');
+        $optinfo = $this->curl->simple_get($this->config->item('api_url_odp') . '?cd=130');
         if ($optinfo) {
             echo $optinfo;
         } else {
@@ -504,7 +504,7 @@ function UpdateProcess()
         $timestart = $this->input->post('timestart');
         $timeend = $this->input->post('timeend');
         $pages = $this->input->post("page");
-        $optinfo = $this->curl->simple_get($this->config->item('api_url2') . '?c=3&nn=tongdaily&un=' . "" . '&ts=' . urlencode($timestart) . '&te=' . urlencode($timeend) . '&mt=vin&ag=Admin&sn=' . "" . '&p=' . $pages . '&lk=1&tr=50');
+        $optinfo = $this->curl->simple_get($this->config->item('api_url2') . '?cd=3&nn=tongdaily&un=' . "" . '&ts=' . urlencode($timestart) . '&te=' . urlencode($timeend) . '&mt=vin&ag=Admin&sn=' . "" . '&p=' . $pages . '&lk=1&tr=50');
         if ($optinfo) {
             echo $optinfo;
         } else {
@@ -518,7 +518,7 @@ function UpdateProcess()
         $status = $this->input->post('status');
         $optinfo = $this->curl->simple_get($this->config->item('api_url') . '?c=103&nn=' . $nickname . '&st=' . $status);
         $datainfo = json_decode($optinfo);
-        $num_daily2 = $this->curl->simple_get($this->config->item('api_portal') . '?c=10');
+        $num_daily2 = $this->curl->simple_get($this->config->item('api_portal') . '?cd=10');
         $numdl2 = json_decode($num_daily2)->number_dl2;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $info = $this->useragent_model->get_info_admin($this->input->post('username'));
